@@ -1,6 +1,6 @@
-﻿namespace Torchiver.TempMover
+﻿namespace Torchiver.TempMover.Forms
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Vyžadovaná proměnná návrháře.
@@ -30,12 +30,12 @@
         {
             this.SuspendLayout();
             // 
-            // Form1
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(707, 297);
-            this.Name = "Form1";
+            this.ClientSize = new System.Drawing.Size(680, 297);
+            this.Name = "MainForm";
             this.Text = "Form1";
             this.ResumeLayout(false);
 
