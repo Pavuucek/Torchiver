@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Torchiver.TempMover")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("X-C Soft ltd.")]
 [assembly: AssemblyProduct("Torchiver.TempMover")]
-[assembly: AssemblyCopyright("Copyright ©  2011")]
+[assembly: AssemblyCopyright("Copyright © X-C Soft ltd. 2011")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // Lze zadat všechny hodnoty nebo nechat hodnoty Čísel Sestavení a Revize ve výchozím nastavení 
 // použitím '*' jak je ukázáno dále:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.7")]
+[assembly: AssemblyVersion("1.0.0.46")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
