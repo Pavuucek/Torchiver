@@ -127,12 +127,17 @@
             this.txtPath2.Size = new System.Drawing.Size(288, 20);
             this.txtPath2.TabIndex = 5;
             // 
+            // tmrMonitor
+            // 
+            this.tmrMonitor.Tick += new System.EventHandler(this.tmrMonitor_Tick);
+            // 
             // numInterval
             // 
             this.numInterval.Location = new System.Drawing.Point(15, 112);
             this.numInterval.Name = "numInterval";
             this.numInterval.Size = new System.Drawing.Size(285, 20);
             this.numInterval.TabIndex = 8;
+            this.numInterval.ValueChanged += new System.EventHandler(this.numInterval_ValueChanged);
             // 
             // label3
             // 

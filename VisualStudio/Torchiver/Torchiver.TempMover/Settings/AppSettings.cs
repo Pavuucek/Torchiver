@@ -18,5 +18,6 @@ namespace Torchiver.TempMover.Settings
         public aInfo AppInfo = new aInfo();
         public string ScanPath = String.Empty;
         public string MovePath = "T:\\";
+        public int Interval = 1;
     }
 }
