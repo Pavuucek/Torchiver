@@ -10,6 +10,7 @@ using System.Text;
 using System.Windows.Forms;
 using ArachNGIN.Files.Strings;
 using MonoTorrent;
+using MonoTorrent.Common;
 using MySql.Data.MySqlClient;
 using MySql.Data.Types;
 
@@ -25,9 +26,17 @@ namespace Torchiver.Archiver.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            InsertTorrent(@"c:\xx\t1.torrent");
-            InsertTorrent(@"c:\xx\t.torrent");
-            InsertTorrent(@"c:\xx\t2.torrent");
+            DirectoryInfo di = new DirectoryInfo(@"c:\xx\");
+            FileInfo[] fi2 = di.GetFiles("*.torrent", SearchOption.AllDirectories);
+
+            foreach (FileInfo fi in fi2)
+            {
+                this.Text=fi.FullName;
+                Application.DoEvents();
+                InsertTorrent(fi.FullName);
+                Application.DoEvents();
+            }
+
             MessageBox.Show("doneeee");
         }
 
@@ -98,11 +107,14 @@ namespace Torchiver.Archiver.Forms
                     return r;
                 }
 
+                // zjistit info_id. to bude HODNE potreba
+                long info_id = cmd_info.LastInsertedId;
+
                 // blob
                 MySqlCommand cmd_blob = new MySql.Data.MySqlClient.MySqlCommand();
                 SQL = "INSERT INTO `torchiver`.`torrent_blobs` (`info_id`, `blob_name`,`blob_blob`) VALUES (@info_id, @blob_name, @blob_blob);";
                 cmd_blob.Parameters.Clear();
-                MySqlParameter p = new MySqlParameter("@info_id", cmd_info.LastInsertedId);
+                MySqlParameter p = new MySqlParameter("@info_id", info_id);
                 cmd_blob.Parameters.Add(p);
                 p = new MySqlParameter("@blob_name", Path.GetFileName(t.TorrentPath));
                 cmd_blob.Parameters.Add(p);
@@ -124,6 +136,38 @@ namespace Torchiver.Archiver.Forms
                     MessageBox.Show(ex.ErrorCode + "\n" + ex.Message);
                     return r;
                 }
+
+                // a ted si dame soubory
+                foreach (TorrentFile singlefile in t.Files)
+                {
+                    MySqlCommand cmd_file = new MySqlCommand();
+                    cmd_file.CommandText = "INSERT INTO `torchiver`.`torrent_files` (`info_id`, `file_ED2K`, `file_startpiece`, `file_endpiece`, `file_path`, `file_length`, `file_MD5`, `file_SHA1`)\n";
+                    cmd_file.CommandText += "VALUES (@info_id, @file_ed2k, @file_startpiece, @file_endpiece, @file_path, @file_length, @file_md5, @file_sha1)";
+                    cmd_file.Parameters.Add(new MySqlParameter("@info_id", info_id));
+                    cmd_file.Parameters.Add(new MySqlParameter("@file_ed2k", StringUtils.ByteArrayToString(singlefile.ED2K)));
+                    cmd_file.Parameters.Add(new MySqlParameter("@file_startpiece", singlefile.StartPieceIndex));
+                    cmd_file.Parameters.Add(new MySqlParameter("@file_endpiece", singlefile.EndPieceIndex));
+                    cmd_file.Parameters.Add(new MySqlParameter("@file_path", singlefile.Path));
+                    cmd_file.Parameters.Add(new MySqlParameter("@file_length", singlefile.Length));
+                    cmd_file.Parameters.Add(new MySqlParameter("@file_md5", StringUtils.ByteArrayToString(singlefile.MD5)));
+                    cmd_file.Parameters.Add(new MySqlParameter("@file_sha1", StringUtils.ByteArrayToString(singlefile.SHA1)));
+                    cmd_file.Connection = conn;
+                    cmd_file.Prepare();
+                    try
+                    {
+                        cmd_file.ExecuteNonQuery();
+                        r = true;
+                    }
+                    catch (MySql.Data.MySqlClient.MySqlException ex)
+                    {
+                        r = false;
+                        transakce.Rollback();
+                        conn.Close();
+                        MessageBox.Show(ex.ErrorCode + "\n" + ex.Message);
+                        return r;
+                    }
+                }
+
 
                 if (r) transakce.Commit();
                 else transakce.Rollback();
