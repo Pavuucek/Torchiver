@@ -1,3 +1,6 @@
 [submodule "ArachNGIN"]
 	path = ArachNGIN
 	url = https://github.com/Pavuucek/ArachNGIN.git
+[submodule "MonoTorrent"]
+	path = MonoTorrent
+	url = https://github.com/mono/monotorrent.git
