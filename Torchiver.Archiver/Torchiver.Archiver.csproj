@@ -95,13 +95,13 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\..\..\Dev\VS\Torchiver\src\MonoTorrent\MonoTorrent.csproj">
-      <Project>{411a9e0e-fdc6-4e25-828a-0c2cd1cd96f8}</Project>
-      <Name>MonoTorrent</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\ArachNGIN\ArachNGIN.Files\ArachNGIN.Files.csproj">
+    <ProjectReference Include="..\ArachNGIN\ArachNGIN.Files\ArachNGIN.Files.csproj">
       <Project>{21fe4ec9-b716-43ba-9124-08439ac740ab}</Project>
       <Name>ArachNGIN.Files</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MonoTorrent\src\MonoTorrent\MonoTorrent.csproj">
+      <Project>{411a9e0e-fdc6-4e25-828a-0c2cd1cd96f8}</Project>
+      <Name>MonoTorrent</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
