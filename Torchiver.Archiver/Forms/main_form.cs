@@ -25,22 +25,6 @@ namespace Torchiver.Archiver.Forms
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            DirectoryInfo di = new DirectoryInfo(@"c:\xx\");
-            FileInfo[] fi2 = di.GetFiles("*.torrent", SearchOption.AllDirectories);
-
-            foreach (FileInfo fi in fi2)
-            {
-                this.Text=fi.FullName;
-                Application.DoEvents();
-                InsertTorrent(fi.FullName);
-                Application.DoEvents();
-            }
-
-            MessageBox.Show("doneeee");
-        }
-
         private static bool InsertTorrent(string torrentfile)
         {
             bool r = false;
@@ -177,6 +161,74 @@ namespace Torchiver.Archiver.Forms
                 }
             }
             return result;
+        }
+
+        private void ConnectionInfoMNU_Click(object sender, EventArgs e)
+        {
+            using (logininfo_form lfm = new logininfo_form())
+            {
+                lfm.LoginInfoTB.Lines = Properties.Settings.Default.torchiverConnectionString.Split(';');
+                lfm.LoginInfoTB.SelectionStart = 0;
+                lfm.LoginInfoTB.SelectionLength = 0;
+                if (lfm.ShowDialog() == DialogResult.OK)
+                {
+                    Properties.Settings.Default["torchiverConnectionString"] = string.Join(";", lfm.LoginInfoTB.Lines);
+                }
+            }
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Properties.Settings.Default.Save();
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            // TODO: Tento řádek načte data do tabulky 'torchiverDataSet.torrent_info'. Můžete jej přesunout nebo jej odstranit podle potřeby.
+            //this.torrent_infoTableAdapter.Fill(this.torchiverDataSet.torrent_info);
+            // TODO: Tento řádek načte data do tabulky 'torchiverDataSet.DataTable1'. Můžete jej přesunout nebo jej odstranit podle potřeby.
+            
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void testbuttonToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //StringUtils.PopulateTreeView(treeView1, new List<string> { @"c:\windows\system32\about\blank" }, '\\');
+            //return;
+            DirectoryInfo di = new DirectoryInfo(@"c:\xx\");
+            FileInfo[] fi2 = di.GetFiles("*.torrent", SearchOption.AllDirectories);
+
+            foreach (FileInfo fi in fi2)
+            {
+                this.Text = fi.FullName;
+                Application.DoEvents();
+                InsertTorrent(fi.FullName);
+                Application.DoEvents();
+            }
+
+            MessageBox.Show("doneeee");
+        }
+
+
+        private void dataGridView1_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                MessageBox.Show(dataGridView1.Rows[e.RowIndex].Cells.GetCellValueFromColumnHeader("info_id").ToString());
+            }
+            catch { }
+        }
+    }
+    public static class datagridhelper
+    {
+        public static object GetCellValueFromColumnHeader(this DataGridViewCellCollection CellCollection, string HeaderText)
+        {
+            return CellCollection.Cast<DataGridViewCell>().First(c => c.OwningColumn.HeaderText == HeaderText).Value;
         }
     }
 }

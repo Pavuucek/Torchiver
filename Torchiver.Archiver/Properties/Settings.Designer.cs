@@ -26,18 +26,8 @@ namespace Torchiver.Archiver.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("data source=C:\\Dev\\VisualStudio\\g")]
-        public string gConnectionString {
-            get {
-                return ((string)(this["gConnectionString"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("server=192.168.0.8;User Id=torchiver;password=le password;Persist Security Info=T" +
-            "rue;database=torchiver;Allow User Variables=True;")]
+        [global::System.Configuration.DefaultSettingValueAttribute("server=192.168.0.8;User Id=torchiver;password=le passwored;Persist Security Info=" +
+            "True;database=torchiver;Allow User Variables=True;")]
         public string torchiverConnectionString {
             get {
                 return ((string)(this["torchiverConnectionString"]));
