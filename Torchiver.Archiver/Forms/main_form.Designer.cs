@@ -31,6 +31,9 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.ConnectMNU = new System.Windows.Forms.ToolStripMenuItem();
             this.ConnectionInfoMNU = new System.Windows.Forms.ToolStripMenuItem();
+            this.ImportTorrentsMNU = new System.Windows.Forms.ToolStripMenuItem();
+            this.ImportTorrentsMNUFiles = new System.Windows.Forms.ToolStripMenuItem();
+            this.ImportTorrentsMNUFolder = new System.Windows.Forms.ToolStripMenuItem();
             this.testbuttonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -43,6 +46,8 @@
             this.FilesTREE = new System.Windows.Forms.TreeView();
             this.PageLog = new System.Windows.Forms.TabPage();
             this.TextLOG = new System.Windows.Forms.TextBox();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -62,6 +67,7 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ConnectMNU,
             this.ConnectionInfoMNU,
+            this.ImportTorrentsMNU,
             this.testbuttonToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -74,6 +80,7 @@
             this.ConnectMNU.Name = "ConnectMNU";
             this.ConnectMNU.Size = new System.Drawing.Size(64, 20);
             this.ConnectMNU.Text = "Connect";
+            this.ConnectMNU.Click += new System.EventHandler(this.ConnectMNU_Click);
             // 
             // ConnectionInfoMNU
             // 
@@ -81,6 +88,29 @@
             this.ConnectionInfoMNU.Size = new System.Drawing.Size(105, 20);
             this.ConnectionInfoMNU.Text = "Connection Info";
             this.ConnectionInfoMNU.Click += new System.EventHandler(this.ConnectionInfoMNU_Click);
+            // 
+            // ImportTorrentsMNU
+            // 
+            this.ImportTorrentsMNU.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ImportTorrentsMNUFiles,
+            this.ImportTorrentsMNUFolder});
+            this.ImportTorrentsMNU.Name = "ImportTorrentsMNU";
+            this.ImportTorrentsMNU.Size = new System.Drawing.Size(102, 20);
+            this.ImportTorrentsMNU.Text = "Import Torrents";
+            // 
+            // ImportTorrentsMNUFiles
+            // 
+            this.ImportTorrentsMNUFiles.Name = "ImportTorrentsMNUFiles";
+            this.ImportTorrentsMNUFiles.Size = new System.Drawing.Size(152, 22);
+            this.ImportTorrentsMNUFiles.Text = "Select files...";
+            this.ImportTorrentsMNUFiles.Click += new System.EventHandler(this.ImportTorrentsMNUFiles_Click);
+            // 
+            // ImportTorrentsMNUFolder
+            // 
+            this.ImportTorrentsMNUFolder.Name = "ImportTorrentsMNUFolder";
+            this.ImportTorrentsMNUFolder.Size = new System.Drawing.Size(152, 22);
+            this.ImportTorrentsMNUFolder.Text = "Select folder...";
+            this.ImportTorrentsMNUFolder.Click += new System.EventHandler(this.ImportTorrentsMNUFolder_Click);
             // 
             // testbuttonToolStripMenuItem
             // 
@@ -158,6 +188,7 @@
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(1060, 215);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
             this.dataGridView1.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_RowEnter);
             // 
             // splitContainer2
@@ -209,12 +240,25 @@
             // TextLOG
             // 
             this.TextLOG.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TextLOG.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.TextLOG.Location = new System.Drawing.Point(3, 3);
             this.TextLOG.Multiline = true;
             this.TextLOG.Name = "TextLOG";
             this.TextLOG.ReadOnly = true;
+            this.TextLOG.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.TextLOG.Size = new System.Drawing.Size(1060, 376);
             this.TextLOG.TabIndex = 0;
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            this.openFileDialog1.Filter = "Torrents|*.torrent|All Files|*.*";
+            this.openFileDialog1.InitialDirectory = global::Torchiver.Archiver.Properties.Settings.Default.ImportPath;
+            this.openFileDialog1.Multiselect = true;
+            // 
+            // folderBrowserDialog1
+            // 
+            this.folderBrowserDialog1.SelectedPath = global::Torchiver.Archiver.Properties.Settings.Default.ImportPath;
             // 
             // MainForm
             // 
@@ -264,8 +308,13 @@
         private System.Windows.Forms.TextBox TrackersTXT;
         private System.Windows.Forms.TreeView FilesTREE;
         private System.Windows.Forms.TabPage PageLog;
-        private System.Windows.Forms.TextBox TextLOG;
         private System.Windows.Forms.DataGridView dataGridView1;
+        public System.Windows.Forms.TextBox TextLOG;
+        private System.Windows.Forms.ToolStripMenuItem ImportTorrentsMNU;
+        private System.Windows.Forms.ToolStripMenuItem ImportTorrentsMNUFiles;
+        private System.Windows.Forms.ToolStripMenuItem ImportTorrentsMNUFolder;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
 

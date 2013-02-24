@@ -23,14 +23,28 @@ namespace Torchiver.Archiver.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("server=192.168.0.8;User Id=torchiver;password=le passwored;Persist Security Info=" +
             "True;database=torchiver;Allow User Variables=True;")]
         public string torchiverConnectionString {
             get {
                 return ((string)(this["torchiverConnectionString"]));
+            }
+            set {
+                this["torchiverConnectionString"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string ImportPath {
+            get {
+                return ((string)(this["ImportPath"]));
+            }
+            set {
+                this["ImportPath"] = value;
             }
         }
     }

@@ -8,6 +8,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 using ArachNGIN.Files.Strings;
 using MonoTorrent;
@@ -20,22 +21,50 @@ namespace Torchiver.Archiver.Forms
 {
     public partial class MainForm : Form
     {
+        private bool is_connected = false;
+        public bool IsConnected
+        {
+            get
+            {
+                return is_connected;
+            }
+            set
+            {
+                is_connected = value;
+                if (!is_connected) ConnectMNU.Text = "Connect";
+                else ConnectMNU.Text = "Disconnect";
+            }
+        }
+
         public MainForm()
         {
             InitializeComponent();
         }
 
-        private static bool InsertTorrent(string torrentfile)
+        public static void Log(string logstr, bool withtime = false)
         {
-            bool r = false;
-            Stream fs = new FileStream(torrentfile, FileMode.Open, FileAccess.Read);
-            byte[] rawdata = new byte[fs.Length];
-            fs.Read(rawdata, 0, (int)fs.Length);
-            fs.Close();
-            MonoTorrent.Common.Torrent torrent = MonoTorrent.Common.Torrent.Load(torrentfile);
+            string s = logstr;
+            if (withtime) s = DateTime.Now.ToString() + " " + s;
+            Program.mainform.TextLOG.BeginInvoke(
+                (MethodInvoker)delegate
+                {
+                    Program.mainform.TextLOG.AppendText(s + Environment.NewLine);
+                }
+                );
 
-            using (MySqlConnection conn = new MySql.Data.MySqlClient.MySqlConnection())
+        }
+
+        private static bool InsertTorrentToDB(string torrentfile)
+        {
+            using (MySqlConnection conn = new MySqlConnection())
             {
+                bool r = false;
+                Stream fs = new FileStream(torrentfile, FileMode.Open, FileAccess.Read);
+                byte[] rawdata = new byte[fs.Length];
+                fs.Read(rawdata, 0, (int)fs.Length);
+                fs.Close();
+                MonoTorrent.Common.Torrent torrent = MonoTorrent.Common.Torrent.Load(torrentfile);
+
                 //nejdriv info
                 MySqlCommand cmd_info = new MySql.Data.MySqlClient.MySqlCommand();
                 string SQL = "set autocommit=0;\n";
@@ -149,6 +178,12 @@ namespace Torchiver.Archiver.Forms
             }
         }
 
+        private bool CheckConnected()
+        {
+            if (IsConnected) return true;
+            else throw new Exception("Not Connected!");
+        }
+
         private static StringCollection GetTrackers(MonoTorrent.Common.Torrent t)
         {
             StringCollection result = new StringCollection();
@@ -198,20 +233,58 @@ namespace Torchiver.Archiver.Forms
 
         private void testbuttonToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //StringUtils.PopulateTreeView(treeView1, new List<string> { @"c:\windows\system32\about\blank" }, '\\');
-            //return;
-            DirectoryInfo di = new DirectoryInfo(@"c:\xx\");
+            
+        }
+
+        private void InsertTorrentDir(string dir)
+        {
+            DirectoryInfo di = new DirectoryInfo(dir);
             FileInfo[] fi2 = di.GetFiles("*.torrent", SearchOption.AllDirectories);
+            InsertTorrentsOnBackground(fi2);
+        }
 
-            foreach (FileInfo fi in fi2)
+        private void InsertTorrentsOnBackground(FileInfo[] fi2)
+        {
+            BackgroundWorker bw = new BackgroundWorker();
+            bw.WorkerReportsProgress = true;
+            ToolStripProgressBar bar = new ToolStripProgressBar();
+            bar.Width = 70;
+            bar.Minimum = 0;
+            bar.Maximum = 100;
+            statusStrip1.Items.AddRange(new ToolStripItem[] { bar });
+            statusStrip1.PerformLayout();
+            bw.DoWork += new DoWorkEventHandler(delegate(object o, DoWorkEventArgs args)
             {
-                this.Text = fi.FullName;
-                Application.DoEvents();
-                InsertTorrent(fi.FullName);
-                Application.DoEvents();
+                Log("inserting torrents start", true);
+                int p = 0;
+                foreach (FileInfo fi in fi2)
+                {
+                    InsertTorrentToDB(fi.FullName);
+                    p++;
+                    bw.ReportProgress((int)(((double)p / (double)fi2.Length) * 100));
+                }
+                Log("inserting torrents stop", true);
             }
-
-            MessageBox.Show("doneeee");
+            );
+            bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(delegate(object o, RunWorkerCompletedEventArgs args)
+            {
+                Log("inserting torrents stop 2", true);
+                try
+                {
+                    bar.Dispose();
+                }
+                catch
+                {
+                }
+                MessageBox.Show("done");
+            }
+            );
+            bw.ProgressChanged += new ProgressChangedEventHandler(delegate(object o, ProgressChangedEventArgs args)
+                {
+                    bar.Value = args.ProgressPercentage;
+                }
+            );
+            bw.RunWorkerAsync();
         }
 
 
@@ -223,6 +296,62 @@ namespace Torchiver.Archiver.Forms
             }
             catch { }
         }
+
+        private bool RefreshDatagrid()
+        {
+            bool result = false;
+            try
+            {
+                MySqlDataAdapter adapter = new MySqlDataAdapter("select * from torrent_info", Properties.Settings.Default.torchiverConnectionString);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+                dataGridView1.DataSource = dt;
+                /*using (MySqlConnection conn = new MySqlConnection())
+                 */
+                result = true;
+            }
+            catch (Exception ex)
+            {
+                result = false;
+                MessageBox.Show(ex.Message);
+                Log(ex.Message, true);
+            }
+            return result;
+        }
+
+        private void ConnectMNU_Click(object sender, EventArgs e)
+        {
+            IsConnected = RefreshDatagrid();
+            // not really disconnecting...
+        }
+
+        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void ImportTorrentsMNUFiles_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                FileInfo[] fi = new FileInfo[openFileDialog1.FileNames.Length];
+                for (int i = 0; i < openFileDialog1.FileNames.Length; i++)
+                {
+                    fi[i] = new FileInfo(openFileDialog1.FileNames[i]);
+                }
+                openFileDialog1.InitialDirectory = Path.GetDirectoryName(openFileDialog1.FileName);
+                InsertTorrentsOnBackground(fi);
+            }
+        }
+
+        private void ImportTorrentsMNUFolder_Click(object sender, EventArgs e)
+        {
+            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+            {
+                InsertTorrentDir(folderBrowserDialog1.SelectedPath);
+            }
+        }
+
     }
     public static class datagridhelper
     {

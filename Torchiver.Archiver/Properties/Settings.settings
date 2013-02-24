@@ -2,13 +2,11 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Torchiver.Archiver.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="torchiverConnectionString" Type="(Connection string)" Scope="Application">
-      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
-&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;ConnectionString&gt;server=192.168.0.8;User Id=torchiver;password=le passwored;Persist Security Info=True;database=torchiver;Allow User Variables=True;&lt;/ConnectionString&gt;
-  &lt;ProviderName&gt;MySql.Data.MySqlClient&lt;/ProviderName&gt;
-&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+    <Setting Name="torchiverConnectionString" Type="System.String" Scope="User">
       <Value Profile="(Default)">server=192.168.0.8;User Id=torchiver;password=le passwored;Persist Security Info=True;database=torchiver;Allow User Variables=True;</Value>
+    </Setting>
+    <Setting Name="ImportPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
     </Setting>
   </Settings>
 </SettingsFile>

@@ -8,6 +8,7 @@ namespace Torchiver.Archiver
 {
     static class Program
     {
+        public static MainForm mainform;
         /// <summary>
         /// Hlavní vstupní bod aplikace.
         /// </summary>
@@ -16,7 +17,7 @@ namespace Torchiver.Archiver
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+            Application.Run(mainform = new MainForm());
         }
     }
 }
