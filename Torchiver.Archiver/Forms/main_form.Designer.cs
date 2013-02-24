@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.ConnectMNU = new System.Windows.Forms.ToolStripMenuItem();
             this.ConnectionInfoMNU = new System.Windows.Forms.ToolStripMenuItem();
@@ -39,14 +38,11 @@
             this.PageData = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.torrentinfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.torchiverDataSet = new Torchiver.Archiver.DB.torchiverDataSet();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.TrackersTXT = new System.Windows.Forms.TextBox();
             this.FilesTREE = new System.Windows.Forms.TreeView();
             this.PageLog = new System.Windows.Forms.TabPage();
             this.TextLOG = new System.Windows.Forms.TextBox();
-            this.torrent_infoTableAdapter = new Torchiver.Archiver.DB.torchiverDataSetTableAdapters.torrent_infoTableAdapter();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -55,8 +51,6 @@
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.torrentinfoBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.torchiverDataSet)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
@@ -166,16 +160,6 @@
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_RowEnter);
             // 
-            // torrentinfoBindingSource
-            // 
-            this.torrentinfoBindingSource.DataMember = "torrent_info";
-            this.torrentinfoBindingSource.DataSource = this.torchiverDataSet;
-            // 
-            // torchiverDataSet
-            // 
-            this.torchiverDataSet.DataSetName = "torchiverDataSet";
-            this.torchiverDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // splitContainer2
             // 
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -232,10 +216,6 @@
             this.TextLOG.Size = new System.Drawing.Size(1060, 376);
             this.TextLOG.TabIndex = 0;
             // 
-            // torrent_infoTableAdapter
-            // 
-            this.torrent_infoTableAdapter.ClearBeforeFill = true;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -258,8 +238,6 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.torrentinfoBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.torchiverDataSet)).EndInit();
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel1.PerformLayout();
             this.splitContainer2.Panel2.ResumeLayout(false);
@@ -288,9 +266,6 @@
         private System.Windows.Forms.TabPage PageLog;
         private System.Windows.Forms.TextBox TextLOG;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private DB.torchiverDataSet torchiverDataSet;
-        private System.Windows.Forms.BindingSource torrentinfoBindingSource;
-        private DB.torchiverDataSetTableAdapters.torrent_infoTableAdapter torrent_infoTableAdapter;
     }
 }
 
