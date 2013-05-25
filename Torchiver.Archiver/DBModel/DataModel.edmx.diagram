@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2da1f82b18224633a3e47b2c04945dcf" Name="Diagram1" >
+        <EntityTypeShape EntityType="DataModel.Info" Width="1.5" PointX="2.875" PointY="2" />
+        <EntityTypeShape EntityType="DataModel.File" Width="1.5" PointX="5.625" PointY="2.125" />
+        <AssociationConnector Association="DataModel.InfoFile" />
+        <EntityTypeShape EntityType="DataModel.Tracker" Width="1.5" PointX="8.25" PointY="2.375" />
+        <AssociationConnector Association="DataModel.InfoTracker" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
