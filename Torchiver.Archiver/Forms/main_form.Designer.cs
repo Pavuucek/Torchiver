@@ -97,6 +97,7 @@
             this.ImportTorrentsMNU.Name = "ImportTorrentsMNU";
             this.ImportTorrentsMNU.Size = new System.Drawing.Size(102, 20);
             this.ImportTorrentsMNU.Text = "Import Torrents";
+            this.ImportTorrentsMNU.Click += new System.EventHandler(this.ImportTorrentsMNU_Click);
             // 
             // ImportTorrentsMNUFiles
             // 

@@ -25,8 +25,8 @@ namespace Torchiver.Archiver.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("server=192.168.0.8;User Id=torchiver;password=le passwored;Persist Security Info=" +
-            "True;database=torchiver;Allow User Variables=True;")]
+        [global::System.Configuration.DefaultSettingValueAttribute("server=192.168.0.8;User Id=torchiver;password=le password;Persist Security Info=T" +
+            "rue;database=torchiver;Allow User Variables=True;")]
         public string torchiverConnectionString {
             get {
                 return ((string)(this["torchiverConnectionString"]));
