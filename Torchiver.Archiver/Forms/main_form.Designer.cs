@@ -71,7 +71,7 @@
             this.testbuttonToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1074, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1176, 24);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -80,14 +80,14 @@
             this.ConnectMNU.Name = "ConnectMNU";
             this.ConnectMNU.Size = new System.Drawing.Size(64, 20);
             this.ConnectMNU.Text = "Connect";
-            this.ConnectMNU.Click += new System.EventHandler(this.ConnectMNU_Click);
+            this.ConnectMNU.Click += new System.EventHandler(this.ConnectMnuClick);
             // 
             // ConnectionInfoMNU
             // 
             this.ConnectionInfoMNU.Name = "ConnectionInfoMNU";
             this.ConnectionInfoMNU.Size = new System.Drawing.Size(105, 20);
             this.ConnectionInfoMNU.Text = "Connection Info";
-            this.ConnectionInfoMNU.Click += new System.EventHandler(this.ConnectionInfoMNU_Click);
+            this.ConnectionInfoMNU.Click += new System.EventHandler(this.ConnectionInfoMnuClick);
             // 
             // ImportTorrentsMNU
             // 
@@ -97,34 +97,34 @@
             this.ImportTorrentsMNU.Name = "ImportTorrentsMNU";
             this.ImportTorrentsMNU.Size = new System.Drawing.Size(102, 20);
             this.ImportTorrentsMNU.Text = "Import Torrents";
-            this.ImportTorrentsMNU.Click += new System.EventHandler(this.ImportTorrentsMNU_Click);
+            this.ImportTorrentsMNU.Click += new System.EventHandler(this.ImportTorrentsMnuClick);
             // 
             // ImportTorrentsMNUFiles
             // 
             this.ImportTorrentsMNUFiles.Name = "ImportTorrentsMNUFiles";
-            this.ImportTorrentsMNUFiles.Size = new System.Drawing.Size(152, 22);
+            this.ImportTorrentsMNUFiles.Size = new System.Drawing.Size(148, 22);
             this.ImportTorrentsMNUFiles.Text = "Select files...";
-            this.ImportTorrentsMNUFiles.Click += new System.EventHandler(this.ImportTorrentsMNUFiles_Click);
+            this.ImportTorrentsMNUFiles.Click += new System.EventHandler(this.ImportTorrentsMnuFilesClick);
             // 
             // ImportTorrentsMNUFolder
             // 
             this.ImportTorrentsMNUFolder.Name = "ImportTorrentsMNUFolder";
-            this.ImportTorrentsMNUFolder.Size = new System.Drawing.Size(152, 22);
+            this.ImportTorrentsMNUFolder.Size = new System.Drawing.Size(148, 22);
             this.ImportTorrentsMNUFolder.Text = "Select folder...";
-            this.ImportTorrentsMNUFolder.Click += new System.EventHandler(this.ImportTorrentsMNUFolder_Click);
+            this.ImportTorrentsMNUFolder.Click += new System.EventHandler(this.ImportTorrentsMnuFolderClick);
             // 
             // testbuttonToolStripMenuItem
             // 
             this.testbuttonToolStripMenuItem.Name = "testbuttonToolStripMenuItem";
             this.testbuttonToolStripMenuItem.Size = new System.Drawing.Size(74, 20);
             this.testbuttonToolStripMenuItem.Text = "testbutton";
-            this.testbuttonToolStripMenuItem.Click += new System.EventHandler(this.testbuttonToolStripMenuItem_Click);
+            this.testbuttonToolStripMenuItem.Click += new System.EventHandler(this.TestbuttonToolStripMenuItemClick);
             // 
             // statusStrip1
             // 
-            this.statusStrip1.Location = new System.Drawing.Point(0, 432);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 478);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1074, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1176, 22);
             this.statusStrip1.TabIndex = 4;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -134,7 +134,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 24);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1074, 408);
+            this.panel1.Size = new System.Drawing.Size(1176, 454);
             this.panel1.TabIndex = 5;
             // 
             // tabControl1
@@ -145,7 +145,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1074, 408);
+            this.tabControl1.Size = new System.Drawing.Size(1176, 454);
             this.tabControl1.TabIndex = 5;
             // 
             // PageData
@@ -154,7 +154,7 @@
             this.PageData.Location = new System.Drawing.Point(4, 22);
             this.PageData.Name = "PageData";
             this.PageData.Padding = new System.Windows.Forms.Padding(3);
-            this.PageData.Size = new System.Drawing.Size(1066, 382);
+            this.PageData.Size = new System.Drawing.Size(1168, 428);
             this.PageData.TabIndex = 0;
             this.PageData.Text = "Data";
             this.PageData.UseVisualStyleBackColor = true;
@@ -173,8 +173,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(1060, 376);
-            this.splitContainer1.SplitterDistance = 215;
+            this.splitContainer1.Size = new System.Drawing.Size(1162, 422);
+            this.splitContainer1.SplitterDistance = 241;
             this.splitContainer1.TabIndex = 0;
             // 
             // dataGridView1
@@ -187,10 +187,10 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1060, 215);
+            this.dataGridView1.Size = new System.Drawing.Size(1162, 241);
             this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
-            this.dataGridView1.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_RowEnter);
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1CellContentClick1);
+            this.dataGridView1.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1RowEnter);
             // 
             // splitContainer2
             // 
@@ -205,8 +205,8 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.FilesTREE);
-            this.splitContainer2.Size = new System.Drawing.Size(1060, 157);
-            this.splitContainer2.SplitterDistance = 353;
+            this.splitContainer2.Size = new System.Drawing.Size(1162, 177);
+            this.splitContainer2.SplitterDistance = 386;
             this.splitContainer2.TabIndex = 0;
             // 
             // TrackersTXT
@@ -216,7 +216,7 @@
             this.TrackersTXT.Multiline = true;
             this.TrackersTXT.Name = "TrackersTXT";
             this.TrackersTXT.ReadOnly = true;
-            this.TrackersTXT.Size = new System.Drawing.Size(353, 157);
+            this.TrackersTXT.Size = new System.Drawing.Size(386, 177);
             this.TrackersTXT.TabIndex = 0;
             // 
             // FilesTREE
@@ -224,7 +224,7 @@
             this.FilesTREE.Dock = System.Windows.Forms.DockStyle.Fill;
             this.FilesTREE.Location = new System.Drawing.Point(0, 0);
             this.FilesTREE.Name = "FilesTREE";
-            this.FilesTREE.Size = new System.Drawing.Size(703, 157);
+            this.FilesTREE.Size = new System.Drawing.Size(772, 177);
             this.FilesTREE.TabIndex = 0;
             // 
             // PageLog
@@ -233,7 +233,7 @@
             this.PageLog.Location = new System.Drawing.Point(4, 22);
             this.PageLog.Name = "PageLog";
             this.PageLog.Padding = new System.Windows.Forms.Padding(3);
-            this.PageLog.Size = new System.Drawing.Size(1066, 382);
+            this.PageLog.Size = new System.Drawing.Size(1168, 428);
             this.PageLog.TabIndex = 1;
             this.PageLog.Text = "Log";
             this.PageLog.UseVisualStyleBackColor = true;
@@ -247,7 +247,7 @@
             this.TextLOG.Name = "TextLOG";
             this.TextLOG.ReadOnly = true;
             this.TextLOG.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.TextLOG.Size = new System.Drawing.Size(1060, 376);
+            this.TextLOG.Size = new System.Drawing.Size(1162, 422);
             this.TextLOG.TabIndex = 0;
             // 
             // openFileDialog1
@@ -261,19 +261,19 @@
             // 
             this.folderBrowserDialog1.SelectedPath = global::Torchiver.Archiver.Properties.Settings.Default.ImportPath;
             // 
-            // MainForm
+            // mainform
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1074, 454);
+            this.ClientSize = new System.Drawing.Size(1176, 500);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
             this.Text = "Form1";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
-            this.Load += new System.EventHandler(this.MainForm_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainFormFormClosing);
+            this.Load += new System.EventHandler(this.MainFormLoad);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
