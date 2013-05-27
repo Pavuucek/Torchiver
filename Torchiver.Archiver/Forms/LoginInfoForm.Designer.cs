@@ -1,6 +1,6 @@
 ﻿namespace Torchiver.Archiver.Forms
 {
-    partial class logininfo_form
+    partial class LoginInfoForm
     {
         /// <summary>
         /// Required designer variable.

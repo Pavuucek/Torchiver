@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace Torchiver.Archiver.Forms
 {
-    public partial class logininfo_form : Form
+    public partial class LoginInfoForm : Form
     {
-        public logininfo_form()
+        public LoginInfoForm()
         {
             InitializeComponent();
         }

@@ -11,8 +11,7 @@ namespace Torchiver.Archiver
     {
         public static MainForm Mainform;
 
-        public static DataContext Data;// = new DataContext(@"metadata=res://*/DBModel.DataContext.csdl|res://*/DBModel.DataContext.ssdl|res://*/DBModel.DataContext.msl;providerName=System.Data.SQLite;provider connection string='data source=.\\OurDatabase.db';");
-        //metadata=res://*/DataContext.csdl|res://*/DataContext.ssdl|res://*/DataContext.msl;
+        public static DataContext Data=new DataContext();
 
         //public static DebugConsole Konzole;
 
@@ -33,19 +32,8 @@ namespace Torchiver.Archiver
                 ProcessInternalCommands = true,
                 UsePlainView = true
             };*/
-            //Database.DefaultConnectionFactory = new SQLiteConnectionFactory();
-            var ecb = new EntityConnectionStringBuilder();
-            // this for some weird reason doesn't work. IDK why.
-            //ecb.Metadata = @"res://*/DBModel.DataContext.csdl|res://*/DBModel.DataContext.ssdl|res://*/DBModel.DataContext.msl;";
-            // and why DAFUQ does this work?
-            //ecb.Metadata = @"res://*/";
-            ecb.Provider = "System.Data.SQLite";
-            //ecb.ProviderConnectionString = @"data source=a.db;Version=3;New=false;";
-            //MessageBox.Show(ecb.ToString());
-            Data=new DataContext(ecb.ToString());
-            
             Database.SetInitializer(new DropCreateDatabaseIfModelChanges<DataContext>());
-            //Data.Database.CreateIfNotExists();
+            Data.Database.CreateIfNotExists();
             Application.Run(Mainform = new MainForm());
         }
     }
