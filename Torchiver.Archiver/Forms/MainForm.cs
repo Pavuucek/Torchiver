@@ -220,13 +220,8 @@ namespace Torchiver.Archiver.Forms
 
         private void DataGridView1RowEnter(object sender, DataGridViewCellEventArgs e)
         {
-            try
-            {
-                LoadFilesFromTorrent((int) dataGridView1.Rows[e.RowIndex].Cells.GetCellValueFromColumnHeader("InfoId"));
-            }
-            catch
-            {
-            }
+            var i = dataGridView1.Rows[e.RowIndex].Cells.GetCellValueFromColumnHeader("InfoId");
+            if (i is int) LoadFilesFromTorrent((int) i);
         }
 
         private void LoadFilesFromTorrent(int infoId)
@@ -240,6 +235,21 @@ namespace Torchiver.Archiver.Forms
             FilesTree.Nodes.Clear();
             StringUtils.PopulateTreeViewByFiles(FilesTree,li,'\\');
             FilesTree.ExpandAll();
+            LoadTextContent(infoId);
+        }
+        private void LoadTextContent(int infoId)
+        {
+            var tor = (from l in Program.Data.Infos where l.InfoId == infoId select l).FirstOrDefault();
+            if (tor == null) return;
+            StringCollection s =new StringCollection();
+            s.Add("Trackers: \n");
+            foreach (var torrentTracker in tor.Trackers)
+            {
+                s.Add(torrentTracker.Url + "\n");
+            }
+            s.Add("Comment:");
+            s.Add(tor.Comment);
+            TrackersTxt.Text = StringCollections.StringCollectionToString(s);
         }
 
 

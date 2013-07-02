@@ -52,10 +52,12 @@
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.PageData.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
@@ -77,14 +79,14 @@
             // 
             // ConnectMnu
             // 
-            this.ConnectMnu.Name = "ConnectMNU";
+            this.ConnectMnu.Name = "ConnectMnu";
             this.ConnectMnu.Size = new System.Drawing.Size(64, 20);
             this.ConnectMnu.Text = "Connect";
             this.ConnectMnu.Click += new System.EventHandler(this.ConnectMnuClick);
             // 
             // ConnectionInfoMnu
             // 
-            this.ConnectionInfoMnu.Name = "ConnectionInfoMNU";
+            this.ConnectionInfoMnu.Name = "ConnectionInfoMnu";
             this.ConnectionInfoMnu.Size = new System.Drawing.Size(105, 20);
             this.ConnectionInfoMnu.Text = "Connection Info";
             this.ConnectionInfoMnu.Click += new System.EventHandler(this.ConnectionInfoMnuClick);
@@ -94,21 +96,21 @@
             this.ImportTorrentsMnu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ImportTorrentsMnuFiles,
             this.ImportTorrentsMnuFolder});
-            this.ImportTorrentsMnu.Name = "ImportTorrentsMNU";
+            this.ImportTorrentsMnu.Name = "ImportTorrentsMnu";
             this.ImportTorrentsMnu.Size = new System.Drawing.Size(102, 20);
             this.ImportTorrentsMnu.Text = "Import Torrents";
             this.ImportTorrentsMnu.Click += new System.EventHandler(this.ImportTorrentsMnuClick);
             // 
             // ImportTorrentsMnuFiles
             // 
-            this.ImportTorrentsMnuFiles.Name = "ImportTorrentsMNUFiles";
+            this.ImportTorrentsMnuFiles.Name = "ImportTorrentsMnuFiles";
             this.ImportTorrentsMnuFiles.Size = new System.Drawing.Size(148, 22);
             this.ImportTorrentsMnuFiles.Text = "Select files...";
             this.ImportTorrentsMnuFiles.Click += new System.EventHandler(this.ImportTorrentsMnuFilesClick);
             // 
             // ImportTorrentsMnuFolder
             // 
-            this.ImportTorrentsMnuFolder.Name = "ImportTorrentsMNUFolder";
+            this.ImportTorrentsMnuFolder.Name = "ImportTorrentsMnuFolder";
             this.ImportTorrentsMnuFolder.Size = new System.Drawing.Size(148, 22);
             this.ImportTorrentsMnuFolder.Text = "Select folder...";
             this.ImportTorrentsMnuFolder.Click += new System.EventHandler(this.ImportTorrentsMnuFolderClick);
@@ -216,6 +218,7 @@
             this.TrackersTxt.Multiline = true;
             this.TrackersTxt.Name = "TrackersTxt";
             this.TrackersTxt.ReadOnly = true;
+            this.TrackersTxt.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.TrackersTxt.Size = new System.Drawing.Size(386, 177);
             this.TrackersTxt.TabIndex = 0;
             // 
@@ -261,7 +264,7 @@
             // 
             this.folderBrowserDialog1.SelectedPath = global::Torchiver.Archiver.Properties.Settings.Default.ImportPath;
             // 
-            // mainform
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -281,11 +284,13 @@
             this.PageData.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel1.PerformLayout();
             this.splitContainer2.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
             this.PageLog.ResumeLayout(false);
             this.PageLog.PerformLayout();
