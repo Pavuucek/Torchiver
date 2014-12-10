@@ -97,13 +97,13 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ArachNGIN\ArachNGIN.Files\ArachNGIN.Files.csproj">
-      <Project>{21FE4EC9-B716-43BA-9124-08439AC740AB}</Project>
-      <Name>ArachNGIN.Files</Name>
-    </ProjectReference>
+    <Content Include="Torchiver.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Torchiver.ico" />
+    <ProjectReference Include="..\ArachNGIN\Files\ArachNGIN.Files.csproj">
+      <Project>{21fe4ec9-b716-43ba-9124-08439ac740ab}</Project>
+      <Name>ArachNGIN.Files</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using System.Windows.Forms;
-using ArachNGIN.Files.Strings;
+using ArachNGIN.Files.Streams;
 
 namespace Torchiver.TempMover.Forms
 {
@@ -23,7 +23,7 @@ namespace Torchiver.TempMover.Forms
         {
             if (dlgBrowse.ShowDialog()==DialogResult.OK)
             {
-                txtPath1.Text = StringUtils.strAddSlash(dlgBrowse.SelectedPath);
+                txtPath1.Text = StringUtils.StrAddSlash(dlgBrowse.SelectedPath);
             }
         }
 
@@ -32,8 +32,8 @@ namespace Torchiver.TempMover.Forms
             txtPath1.Text = Program.TempM.TempDir;
             txtPath2.Text = Program.aSettings.MovePath;
             if (Program.aSettings.ScanPath != String.Empty) txtPath1.Text = Program.aSettings.ScanPath;
-            txtPath1.Text = StringUtils.strAddSlash(txtPath1.Text);
-            txtPath2.Text = StringUtils.strAddSlash(txtPath2.Text);
+            txtPath1.Text = StringUtils.StrAddSlash(txtPath1.Text);
+            txtPath2.Text = StringUtils.StrAddSlash(txtPath2.Text);
             dlgBrowse.SelectedPath = txtPath1.Text;
             this.txtPath1.TextChanged += new System.EventHandler(this.txtPath_TextChanged);
             this.txtPath2.TextChanged += new System.EventHandler(this.txtPath2_TextChanged);
@@ -49,7 +49,7 @@ namespace Torchiver.TempMover.Forms
 
         private void txtPath_TextChanged(object sender, EventArgs e)
         {
-            if (txtPath1.Text != String.Empty) Program.aSettings.ScanPath = StringUtils.strAddSlash(txtPath1.Text);
+            if (txtPath1.Text != String.Empty) Program.aSettings.ScanPath = StringUtils.StrAddSlash(txtPath1.Text);
         }
 
         private void mnuClose_Click(object sender, EventArgs e)
@@ -91,13 +91,13 @@ namespace Torchiver.TempMover.Forms
         {
             if (dlgBrowse.ShowDialog() == DialogResult.OK)
             {
-                txtPath2.Text = StringUtils.strAddSlash(dlgBrowse.SelectedPath);
+                txtPath2.Text = StringUtils.StrAddSlash(dlgBrowse.SelectedPath);
             }
         }
 
         private void txtPath2_TextChanged(object sender, EventArgs e)
         {
-            if (txtPath2.Text != String.Empty) Program.aSettings.MovePath = StringUtils.strAddSlash(txtPath2.Text);
+            if (txtPath2.Text != String.Empty) Program.aSettings.MovePath = StringUtils.StrAddSlash(txtPath2.Text);
             
         }
 

@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace Torchiver.TempMover.Settings
 {
-    class AppSettings:ArachNGIN.Files.Settings.JSONSettings1<AppSettings>
+    class AppSettings:ArachNGIN.Files.Settings.JsonSettings1<AppSettings>
     {
         public class aInfo
         {

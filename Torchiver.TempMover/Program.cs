@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using Torchiver.TempMover.Forms;
 using Torchiver.TempMover.Settings;
 using ArachNGIN.Files;
+using ArachNGIN.Files.TempDir;
 
 namespace Torchiver.TempMover
 {
