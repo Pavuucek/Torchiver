@@ -117,7 +117,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ArachNGIN\ArachNGIN.Files\ArachNGIN.Files.csproj">
+    <ProjectReference Include="..\ArachNGIN\Files\ArachNGIN.Files.csproj">
       <Project>{21fe4ec9-b716-43ba-9124-08439ac740ab}</Project>
       <Name>ArachNGIN.Files</Name>
     </ProjectReference>

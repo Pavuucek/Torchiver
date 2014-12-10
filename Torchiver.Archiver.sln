@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30723.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Torchiver.Archiver", "Torchiver.Archiver\Torchiver.Archiver.csproj", "{79508973-BBD6-44BA-87B4-3424FF57CF7C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoTorrent", "MonoTorrent\src\MonoTorrent\MonoTorrent.csproj", "{411A9E0E-FDC6-4E25-828A-0C2CD1CD96F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArachNGIN.Files", "ArachNGIN\ArachNGIN.Files\ArachNGIN.Files.csproj", "{21FE4EC9-B716-43BA-9124-08439AC740AB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArachNGIN.Files", "ArachNGIN\Files\ArachNGIN.Files.csproj", "{21FE4EC9-B716-43BA-9124-08439AC740AB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
