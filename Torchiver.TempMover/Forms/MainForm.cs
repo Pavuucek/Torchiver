@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.IO;
 using System.Windows.Forms;
-using ArachNGIN.Files.Streams;
+using ArachNGIN.ClassExtensions;
+using Torchiver.TempMover.Properties;
 
 namespace Torchiver.TempMover.Forms
 {
@@ -16,40 +11,37 @@ namespace Torchiver.TempMover.Forms
         public MainForm()
         {
             InitializeComponent();
-            this.Visible = false;
+            Visible = false;
         }
 
         private void btnBrowse_Click(object sender, EventArgs e)
         {
-            if (dlgBrowse.ShowDialog()==DialogResult.OK)
-            {
-                txtPath1.Text = StringUtils.StrAddSlash(dlgBrowse.SelectedPath);
-            }
+            if (dlgBrowse.ShowDialog() == DialogResult.OK) txtPath1.Text = dlgBrowse.SelectedPath.AddSlash();
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
             txtPath1.Text = Program.TempM.TempDir;
             txtPath2.Text = Program.aSettings.MovePath;
-            if (Program.aSettings.ScanPath != String.Empty) txtPath1.Text = Program.aSettings.ScanPath;
-            txtPath1.Text = StringUtils.StrAddSlash(txtPath1.Text);
-            txtPath2.Text = StringUtils.StrAddSlash(txtPath2.Text);
+            if (Program.aSettings.ScanPath != string.Empty) txtPath1.Text = Program.aSettings.ScanPath;
+            txtPath1.Text = txtPath1.Text.AddSlash();
+            txtPath2.Text = txtPath2.Text.AddSlash();
             dlgBrowse.SelectedPath = txtPath1.Text;
-            this.txtPath1.TextChanged += new System.EventHandler(this.txtPath_TextChanged);
-            this.txtPath2.TextChanged += new System.EventHandler(this.txtPath2_TextChanged);
+            txtPath1.TextChanged += txtPath_TextChanged;
+            txtPath2.TextChanged += txtPath2_TextChanged;
             Program.aSettings.ScanPath = txtPath1.Text;
             Program.aSettings.MovePath = txtPath2.Text;
-            numInterval.Value = (decimal)Program.aSettings.Interval;
-            trayIcon.Icon = Properties.Resources.Torchiver;
-            this.Icon = Properties.Resources.Torchiver;
-            this.ShowInTaskbar = false;
-            this.WindowState = FormWindowState.Minimized;
+            numInterval.Value = Program.aSettings.Interval;
+            trayIcon.Icon = Resources.Torchiver;
+            Icon = Resources.Torchiver;
+            ShowInTaskbar = false;
+            WindowState = FormWindowState.Minimized;
             tmrMonitor.Enabled = true;
         }
 
         private void txtPath_TextChanged(object sender, EventArgs e)
         {
-            if (txtPath1.Text != String.Empty) Program.aSettings.ScanPath = StringUtils.StrAddSlash(txtPath1.Text);
+            if (txtPath1.Text != string.Empty) Program.aSettings.ScanPath = txtPath1.Text.AddSlash();
         }
 
         private void mnuClose_Click(object sender, EventArgs e)
@@ -59,55 +51,48 @@ namespace Torchiver.TempMover.Forms
 
         private void mnuShow_Click(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Normal;
-            this.Show();
+            WindowState = FormWindowState.Normal;
+            Show();
         }
 
         private void MainForm_Resize(object sender, EventArgs e)
         {
-            if (FormWindowState.Minimized == this.WindowState)
+            if (FormWindowState.Minimized == WindowState)
             {
-                this.Hide();
-                this.ShowInTaskbar = false;
+                Hide();
+                ShowInTaskbar = false;
             }
-            else if (FormWindowState.Normal == this.WindowState)
+            else if (FormWindowState.Normal == WindowState)
             {
-                this.ShowInTaskbar = true;
+                ShowInTaskbar = true;
             }
         }
 
         private void MainForm_GiveFeedback(object sender, GiveFeedbackEventArgs e)
         {
-
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             e.Cancel = true;
-            this.WindowState = FormWindowState.Minimized;
+            WindowState = FormWindowState.Minimized;
         }
 
         private void btnBrowse2_Click(object sender, EventArgs e)
         {
-            if (dlgBrowse.ShowDialog() == DialogResult.OK)
-            {
-                txtPath2.Text = StringUtils.StrAddSlash(dlgBrowse.SelectedPath);
-            }
+            if (dlgBrowse.ShowDialog() == DialogResult.OK) txtPath2.Text = dlgBrowse.SelectedPath.AddSlash();
         }
 
         private void txtPath2_TextChanged(object sender, EventArgs e)
         {
-            if (txtPath2.Text != String.Empty) Program.aSettings.MovePath = StringUtils.StrAddSlash(txtPath2.Text);
-            
+            if (txtPath2.Text != string.Empty) Program.aSettings.MovePath = txtPath2.Text.AddSlash();
         }
 
         private void tmrMonitor_Tick(object sender, EventArgs e)
         {
-            string[] torrents = Directory.GetFiles(Program.aSettings.ScanPath, "*.torrent");
+            var torrents = Directory.GetFiles(Program.aSettings.ScanPath, "*.torrent");
             if (torrents.Length > 0)
-            {
-                foreach (string torrent in torrents)
-                {
+                foreach (var torrent in torrents)
                     try
                     {
                         Directory.Move(torrent, Program.aSettings.MovePath + Path.GetFileName(torrent));
@@ -115,15 +100,13 @@ namespace Torchiver.TempMover.Forms
                     catch
                     {
                     }
-                }
-            }
         }
 
         private void numInterval_ValueChanged(object sender, EventArgs e)
         {
             if (numInterval.Value <= 0) numInterval.Value = 1;
-            tmrMonitor.Interval = (int)numInterval.Value * 60 * 1000;
-            Program.aSettings.Interval = (int)numInterval.Value;
+            tmrMonitor.Interval = (int) numInterval.Value * 60 * 1000;
+            Program.aSettings.Interval = (int) numInterval.Value;
         }
     }
 }

@@ -1,32 +1,30 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Forms;
+using ArachNGIN.Files.TempDir;
 using Torchiver.TempMover.Forms;
 using Torchiver.TempMover.Settings;
-using ArachNGIN.Files;
-using ArachNGIN.Files.TempDir;
 
 namespace Torchiver.TempMover
 {
-    static class Program
+    internal static class Program
     {
         public static MainForm MF;
         public static TempManager TempM = new TempManager();
         public static AppSettings aSettings = AppSettings.Load("config.json");
+
         /// <summary>
-        /// Hlavní vstupní bod aplikace.
+        ///     Hlavní vstupní bod aplikace.
         /// </summary>
         [STAThread]
-        static void Main()
+        private static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.ApplicationExit += new EventHandler(Application_ApplicationExit);
+            Application.ApplicationExit += Application_ApplicationExit;
             Application.Run(MF = new MainForm());
         }
 
-        static void Application_ApplicationExit(object sender, EventArgs e)
+        private static void Application_ApplicationExit(object sender, EventArgs e)
         {
             try
             {
@@ -34,7 +32,6 @@ namespace Torchiver.TempMover
             }
             catch
             {
-
             }
         }
     }

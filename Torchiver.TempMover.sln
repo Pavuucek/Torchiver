@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.329
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Torchiver.TempMover", "Torchiver.TempMover\Torchiver.TempMover.csproj", "{C9015CE6-0B69-4C98-AC9C-CBD46A9C2D05}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArachNGIN.Files", "ArachNGIN\Files\ArachNGIN.Files.csproj", "{21FE4EC9-B716-43BA-9124-08439AC740AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArachNGIN.ClassExtensions", "ArachNGIN\ClassExtensions\ArachNGIN.ClassExtensions.csproj", "{0C62509F-6707-4ACE-B644-2A029C1FD942}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,8 +23,15 @@ Global
 		{21FE4EC9-B716-43BA-9124-08439AC740AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{21FE4EC9-B716-43BA-9124-08439AC740AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{21FE4EC9-B716-43BA-9124-08439AC740AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C62509F-6707-4ACE-B644-2A029C1FD942}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C62509F-6707-4ACE-B644-2A029C1FD942}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C62509F-6707-4ACE-B644-2A029C1FD942}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C62509F-6707-4ACE-B644-2A029C1FD942}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {70FE7675-3F8A-41BA-A39B-7E6CFC88539B}
 	EndGlobalSection
 EndGlobal
