@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using ArachNGIN.ClassExtensions;
 using Torchiver.Archiver.DBModel;
 using Torchiver.Archiver.Properties;
 using TorrentFile = Torchiver.Archiver.DBModel.TorrentFile;
@@ -43,6 +44,11 @@ namespace Torchiver.Archiver.Forms
                 );
         }
 
+        private static string ByteArrayToString(byte[] array)
+        {
+            return string.Join(",", array);
+        }
+
         private static bool InsertTorrentToDb(string torrentfile)
         {
             var r = false;
@@ -59,9 +65,9 @@ namespace Torchiver.Archiver.Forms
                               CreatedDate = torrent.CreationDate,
                               BlockSize = torrent.PieceLength,
                               BlockCount = torrent.Pieces.Count,
-                              Sha = StringUtils.ByteArrayToString(torrent.SHA1),
-                              Ed2K = StringUtils.ByteArrayToString(torrent.ED2K),
-                              MagnetUrl = "magnet:?xt=urn:" + StringUtils.ByteArrayToString(torrent.InfoHash.ToArray()),
+                              Sha = ByteArrayToString(torrent.SHA1),
+                              Ed2K = ByteArrayToString(torrent.ED2K),
+                              MagnetUrl = "magnet:?xt=urn:" + ByteArrayToString(torrent.InfoHash.ToArray()),
                               FileCount = torrent.Files.Length,
                               TotalSize = torrent.Size,
                               IsPrivate = torrent.IsPrivate,
@@ -72,7 +78,7 @@ namespace Torchiver.Archiver.Forms
                           };
             if (string.IsNullOrEmpty(dbt.Sha))
             {
-                dbt.Sha = StringUtils.ByteArrayToString(torrent.InfoHash.ToArray());
+                dbt.Sha = ByteArrayToString(torrent.InfoHash.ToArray());
             }
             //
             //Program.Data.Infos.Add(dbt);
@@ -98,13 +104,13 @@ namespace Torchiver.Archiver.Forms
                 var tf = new TorrentFile
                              {
                                  Info = dbt,
-                                 Ed2K = StringUtils.ByteArrayToString(singlefile.ED2K),
+                                 Ed2K = ByteArrayToString(singlefile.ED2K),
                                  StartBlock = singlefile.StartPieceIndex,
                                  EndBlock = singlefile.EndPieceIndex,
                                  Path = singlefile.Path,
                                  Size = singlefile.Length,
-                                 Md5 = StringUtils.ByteArrayToString(singlefile.MD5),
-                                 Sha = StringUtils.ByteArrayToString(singlefile.SHA1)
+                                 Md5 = ByteArrayToString(singlefile.MD5),
+                                 Sha = ByteArrayToString(singlefile.SHA1)
                              };
                 //Program.Data.Files.Add(tf);
                 dbt.Files.Add(tf);
@@ -249,7 +255,7 @@ namespace Torchiver.Archiver.Forms
             }
             s.Add("Comment:");
             s.Add(tor.Comment);
-            TrackersTxt.Text = StringCollections.StringCollectionToString(s);
+            TrackersTxt.Text = s.StringCollectionToString();
         }
 
 

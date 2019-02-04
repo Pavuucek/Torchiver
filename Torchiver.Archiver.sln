@@ -1,13 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.329
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Torchiver.Archiver", "Torchiver.Archiver\Torchiver.Archiver.csproj", "{79508973-BBD6-44BA-87B4-3424FF57CF7C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoTorrent", "MonoTorrent\src\MonoTorrent\MonoTorrent.csproj", "{411A9E0E-FDC6-4E25-828A-0C2CD1CD96F8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArachNGIN.Files", "ArachNGIN\Files\ArachNGIN.Files.csproj", "{21FE4EC9-B716-43BA-9124-08439AC740AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArachNGIN.ClassExtensions", "ArachNGIN\ClassExtensions\ArachNGIN.ClassExtensions.csproj", "{0C62509F-6707-4ACE-B644-2A029C1FD942}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArachNGIN.Components.Console", "ArachNGIN\Components\Console\ArachNGIN.Components.Console.csproj", "{24082240-398A-46E4-BF29-18B4B85EE9DF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -46,8 +50,35 @@ Global
 		{21FE4EC9-B716-43BA-9124-08439AC740AB}.Stats|Any CPU.ActiveCfg = Release|Any CPU
 		{21FE4EC9-B716-43BA-9124-08439AC740AB}.Stats|Any CPU.Build.0 = Release|Any CPU
 		{21FE4EC9-B716-43BA-9124-08439AC740AB}.Stats|x86.ActiveCfg = Release|Any CPU
+		{0C62509F-6707-4ACE-B644-2A029C1FD942}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C62509F-6707-4ACE-B644-2A029C1FD942}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C62509F-6707-4ACE-B644-2A029C1FD942}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0C62509F-6707-4ACE-B644-2A029C1FD942}.Debug|x86.Build.0 = Debug|Any CPU
+		{0C62509F-6707-4ACE-B644-2A029C1FD942}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C62509F-6707-4ACE-B644-2A029C1FD942}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C62509F-6707-4ACE-B644-2A029C1FD942}.Release|x86.ActiveCfg = Release|Any CPU
+		{0C62509F-6707-4ACE-B644-2A029C1FD942}.Release|x86.Build.0 = Release|Any CPU
+		{0C62509F-6707-4ACE-B644-2A029C1FD942}.Stats|Any CPU.ActiveCfg = Release|Any CPU
+		{0C62509F-6707-4ACE-B644-2A029C1FD942}.Stats|Any CPU.Build.0 = Release|Any CPU
+		{0C62509F-6707-4ACE-B644-2A029C1FD942}.Stats|x86.ActiveCfg = Release|Any CPU
+		{0C62509F-6707-4ACE-B644-2A029C1FD942}.Stats|x86.Build.0 = Release|Any CPU
+		{24082240-398A-46E4-BF29-18B4B85EE9DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24082240-398A-46E4-BF29-18B4B85EE9DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24082240-398A-46E4-BF29-18B4B85EE9DF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{24082240-398A-46E4-BF29-18B4B85EE9DF}.Debug|x86.Build.0 = Debug|Any CPU
+		{24082240-398A-46E4-BF29-18B4B85EE9DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24082240-398A-46E4-BF29-18B4B85EE9DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24082240-398A-46E4-BF29-18B4B85EE9DF}.Release|x86.ActiveCfg = Release|Any CPU
+		{24082240-398A-46E4-BF29-18B4B85EE9DF}.Release|x86.Build.0 = Release|Any CPU
+		{24082240-398A-46E4-BF29-18B4B85EE9DF}.Stats|Any CPU.ActiveCfg = Release|Any CPU
+		{24082240-398A-46E4-BF29-18B4B85EE9DF}.Stats|Any CPU.Build.0 = Release|Any CPU
+		{24082240-398A-46E4-BF29-18B4B85EE9DF}.Stats|x86.ActiveCfg = Release|Any CPU
+		{24082240-398A-46E4-BF29-18B4B85EE9DF}.Stats|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C1E53280-E671-46DF-9043-91B9E926B755}
 	EndGlobalSection
 EndGlobal

@@ -50,11 +50,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\EntityFramework.6.1.1\lib\net40\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net40\EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.1.1\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net40\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -120,6 +119,14 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ArachNGIN\ClassExtensions\ArachNGIN.ClassExtensions.csproj">
+      <Project>{0c62509f-6707-4ace-b644-2a029c1fd942}</Project>
+      <Name>ArachNGIN.ClassExtensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ArachNGIN\Components\Console\ArachNGIN.Components.Console.csproj">
+      <Project>{24082240-398a-46e4-bf29-18b4b85ee9df}</Project>
+      <Name>ArachNGIN.Components.Console</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ArachNGIN\Files\ArachNGIN.Files.csproj">
       <Project>{21fe4ec9-b716-43ba-9124-08439ac740ab}</Project>
       <Name>ArachNGIN.Files</Name>

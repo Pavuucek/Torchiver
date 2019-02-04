@@ -2,6 +2,8 @@
 using System.Data.Entity;
 //using System.Data.EntityClient;
 using System.Windows.Forms;
+using ArachNGIN.Components.Console;
+using ArachNGIN.Components.Console.Misc;
 using Torchiver.Archiver.DBModel;
 using Torchiver.Archiver.Forms;
 
@@ -13,8 +15,9 @@ namespace Torchiver.Archiver
 
         public static DataContext Data=new DataContext();
 
-        //public static DebugConsole Konzole;
-
+#if DEBUG
+        public static DebugConsole Konzole;
+#endif
         /// <summary>
         /// Hlavní vstupní bod aplikace.
         /// </summary>
@@ -23,15 +26,17 @@ namespace Torchiver.Archiver
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            /*Konzole = new DebugConsole
+#if DEBUG
+            Konzole = new DebugConsole
             {
                 AutoSave = ConsoleAutoSave.OnLineAdd,
                 Caption = "Konzole",
                 EchoCommands = true,
                 ScreenLocation = ConsoleLocation.TopRight,
                 ProcessInternalCommands = true,
-                UsePlainView = true
-            };*/
+            };
+            Konzole.Show();
+#endif
             Database.SetInitializer(new DropCreateDatabaseIfModelChanges<DataContext>());
             Data.Database.CreateIfNotExists();
             Application.Run(Mainform = new MainForm());
